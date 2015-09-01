@@ -8,18 +8,21 @@ var cur_time;
 var interval;
 var end=false;
 
+
 var setTurn = function(){
     timer();
-    if(timer()>10000){
+    if(timer()>3000){
         turn=!turn;
         pre_time=cur_time;
-        console.log("what?");
+        select=false;
     }
     console.log(turn);
+
     if(turn)
     {
         leap_material.color.r=256;
         leap_material.color.g=0;
+
     }else{
         leap_material.color.r=0;
         leap_material.color.g=256;

@@ -6,6 +6,13 @@ var scaleLeap = 20;
 var diffLeap = 0;
 var diffLeapY = -3;
 var disp = new THREE.Vector3;
+
+//selection once a turn
+var first_selected_block=jenga[0][0];
+var select = false;
+
+
+
 var leapSphere = {
     position: new THREE.Vector3(0,-10,0),
     grap: false
@@ -38,9 +45,10 @@ Leap.loop((function(){
         if ( selected_block !== null ) {
             var _vector = new THREE.Vector3();
             _vector.set(1,1,1);
+
             selected_block.setAngularFactor( _vector );
             selected_block.setLinearFactor( _vector );
-            selected_block.material=block_material;
+            selected_block.material=fselected_block_material;
             selected_block = null;
 
         }
@@ -57,7 +65,12 @@ Leap.loop((function(){
             var cur_grap;
             if((cur_grap = frame.hands[0].pinchStrength>0.5)){
                 if (!leapSphere.grap) {
-                    jengaSelect(leapSphere.position);
+                    // 처음 선택한것이랑 같을때랑 턴이 시작되어 select을 할때만 바꿀 수 있다.
+                    if( select==false || (new THREE.Box3()).setFromObject(first_selected_block).containsPoint(leapSphere.position)){
+                        jengaSelect(leapSphere.position);
+                        select=true;
+                        first_selected_block=selected_block;
+                    }
                 }
             }else{
                 if(leapSphere.grap){

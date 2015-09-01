@@ -8,7 +8,7 @@ jenga[1] = new Array(16);
 jenga[2] = new Array(16);
 
 var render_stats, physics_stats, scene, dir_light, am_light, camera, cur_angle,
-    table, blocks = [], table_material, block_material,selected_block_material,over_block_material,leap_material,
+    table, blocks = [], table_material, block_material,selected_block_material,over_block_material,leap_material,fselected_block_material
     selected_block = null;
 
 var renderSetting = function(){
@@ -86,8 +86,8 @@ var materialSetting = function(){
 
     block_material = Physijs.createMaterial(
         new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/plywood.jpg' ), ambient: 0xFFFFFF }),
-        .1, // medium friction
-        .5// medium restitution
+        .4, // medium friction
+        .4// medium restitution
         //default 0.4 0.4
     );
     block_material.map.wrapS = block_material.map.wrapT = THREE.RepeatWrapping;
@@ -95,8 +95,8 @@ var materialSetting = function(){
 
     over_block_material = Physijs.createMaterial(
         new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/plywood.jpg' ), ambient: 0xFFFFFF}),
-        .1, // medium friction
-        .5// medium restitution
+        .4, // medium friction
+        .4// medium restitution
         //default 0.4 0.4
     );
     over_block_material.color.r+=0.5;
@@ -112,6 +112,16 @@ var materialSetting = function(){
     selected_block_material.color.r+=1;
     selected_block_material.map.wrapS = block_material.map.wrapT = THREE.RepeatWrapping;
     selected_block_material.map.repeat.set( 1, .5 );
+
+    fselected_block_material = Physijs.createMaterial(
+        new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/plywood.jpg' ), ambient: 0xFFFFFF,color: 0x880000}),
+        0.0, // medium friction
+        0.0// medium restitution
+        //default 0.4 0.4
+    );
+    fselected_block_material.color.g+=1;
+    fselected_block_material.map.wrapS = block_material.map.wrapT = THREE.RepeatWrapping;
+    fselected_block_material.map.repeat.set( 1, .5 );
 
 };
 
@@ -163,6 +173,7 @@ var createLeapObj =function(){
     scene.add(leapSphere);
 
 };
+
 
 var sceneSetting = function(){
     scene = new Physijs.Scene({ fixedTimeStep: 1 / 120 });
