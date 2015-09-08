@@ -22,14 +22,11 @@ var updateControl = function () {
         //color setting
         for (_i = 0; _i < blocks.length - 3; _i++) {
 
-            if(blocks[_i]==first_selected_block&&select==true){
+            if(blocks[_i]==first_selected_block){
                 blocks[_i].material = fselected_block_material;
-            }
-
-           if ((new THREE.Box3()).setFromObject(blocks[_i]).containsPoint(leapSphere.position)) {
+            }else if((new THREE.Box3()).setFromObject(blocks[_i]).containsPoint(leapSphere.position)) {
                 blocks[_i].material = over_block_material;
-            }
-            else if(blocks[_i]!=first_selected_block || select==false) {
+            }else{
                 blocks[_i].material = block_material;
             }
 

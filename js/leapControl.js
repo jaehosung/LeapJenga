@@ -8,15 +8,8 @@ var diffLeapY = -3;
 var disp = new THREE.Vector3;
 
 //selection once a turn
-var first_selected_block=jenga[0][0];
-var select = false;
-
-
-
-var leapSphere = {
-    position: new THREE.Vector3(0,-10,0),
-    grap: false
-};
+var first_selected_block=null;
+var leapSphere;
 
 
 Leap.loop((function(){
@@ -38,23 +31,24 @@ Leap.loop((function(){
                 }
             }
         }
-    }
+    };
 
     var jengaUnSelect = function(){
 
         if ( selected_block !== null ) {
             var _vector = new THREE.Vector3();
             _vector.set(1,1,1);
-
             selected_block.setAngularFactor( _vector );
             selected_block.setLinearFactor( _vector );
-            selected_block.material=fselected_block_material;
             selected_block = null;
 
         }
-    }
+    };
 
     return function (frame) {
+
+        console.log(leapSphere.position);
+
         if (frame.hands.length > 0) {
 
             var after_pos = rotate(frame.hands[0].palmPosition[0], frame.hands[0].palmPosition[2], cur_angle);
@@ -65,12 +59,15 @@ Leap.loop((function(){
             var cur_grap;
             if((cur_grap = frame.hands[0].pinchStrength>0.5)){
                 if (!leapSphere.grap) {
+
                     // 처음 선택한것이랑 같을때랑 턴이 시작되어 select을 할때만 바꿀 수 있다.
-                    if( select==false || (new THREE.Box3()).setFromObject(first_selected_block).containsPoint(leapSphere.position)){
+                    if(first_selected_block==null){
                         jengaSelect(leapSphere.position);
-                        select=true;
                         first_selected_block=selected_block;
+                    }else if((new THREE.Box3()).setFromObject(first_selected_block).containsPoint(leapSphere.position)){
+                        jengaSelect(leapSphere.position);
                     }
+
                 }
             }else{
                 if(leapSphere.grap){

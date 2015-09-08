@@ -8,7 +8,7 @@ jenga[1] = new Array(16);
 jenga[2] = new Array(16);
 
 var render_stats, physics_stats, scene, dir_light, am_light, camera, cur_angle,
-    table, blocks = [], table_material, block_material,selected_block_material,over_block_material,leap_material,fselected_block_material
+    table, blocks = [], table_material, block_material,selected_block_material,over_block_material,leap_material,fselected_block_material,
     selected_block = null;
 
 var renderSetting = function(){
@@ -56,7 +56,7 @@ var lightSetting = function(){
 
     // directional light
     dir_light = new THREE.DirectionalLight( 0xFFFFFF );
-    dir_light.position.set(25, 25, 20  );
+    dir_light.position.set(25, 25, 20 );
     dir_light.target.position.copy( scene.position );
     dir_light.castShadow = true;
     dir_light.shadowCameraLeft = -30;
@@ -172,6 +172,9 @@ var createLeapObj =function(){
     leapSphere.castShadow = true;
     scene.add(leapSphere);
 
+    // init position / grap
+    leapSphere.position.y = 100;
+    leapSphere.grap = false;
 };
 
 

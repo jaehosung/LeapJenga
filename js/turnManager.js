@@ -8,13 +8,16 @@ var cur_time;
 var interval;
 var end=false;
 
+//setting
+var time = 10000;
+
 
 var setTurn = function(){
     timer();
-    if(timer()>3000){
+    if(timer()>time){
         turn=!turn;
         pre_time=cur_time;
-        select=false;
+        first_selected_block=null;
     }
     console.log(turn);
 
@@ -35,7 +38,7 @@ var checkLose= function(){
        console.log(turn + "lose");
        end=true;
    }
-}
+};
 
 var timer = function(){
     cur_time = new Date();

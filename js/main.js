@@ -8,9 +8,6 @@ Physijs.scripts.worker = 'libs/physijs/physijs_worker.js';
 Physijs.scripts.ammo = 'ammo.js';
 
 
-
-
-
 var initScene, render, renderer;
 
 
