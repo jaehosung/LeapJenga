@@ -4,7 +4,7 @@
 
 'use strict';
 
-Physijs.scripts.worker = 'libs/physijs/physijs_worker.js';
+Physijs.scripts.worker = 'libs/physijs/physijs_worker.js';;
 Physijs.scripts.ammo = 'ammo.js';
 
 
@@ -49,7 +49,7 @@ render = function() {
     renderer.render( scene, camera );
     render_stats.update();
     if(!end)setTurn();
-    checkLose();
+
 };
 
 window.onload = initScene;

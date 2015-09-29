@@ -2,6 +2,7 @@
  * Created by Jaeho on 2015-08-30.
  */
 //leapmotion scaling
+
 var scaleLeap = 20;
 var diffLeap = 0;
 var diffLeapY = -3;
@@ -47,7 +48,7 @@ Leap.loop((function(){
 
     return function (frame) {
 
-        console.log(leapSphere.position);
+        //console.log(leapSphere.position);
 
         if (frame.hands.length > 0) {
 

@@ -2,6 +2,7 @@
  * Created by Jaeho on 2015-08-30.
  */
 
+
 var jenga = new Array(3);
 jenga[0] = new Array(16);
 jenga[1] = new Array(16);
@@ -95,7 +96,7 @@ var materialSetting = function(){
 
     over_block_material = Physijs.createMaterial(
         new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/plywood.jpg' ), ambient: 0xFFFFFF}),
-        .4, // medium friction
+        .0, // medium friction
         .4// medium restitution
         //default 0.4 0.4
     );
@@ -140,11 +141,12 @@ var createTable = function(){
 
 var createTower = function() {
 
-    var block_length = 6, block_height = 1, block_width = 1.5, block_offset = 2,
+    var block_length = 6, block_height = 0.8, block_width = 1.5, block_offset = 2,
         block_geometry = new THREE.BoxGeometry( block_length, block_height, block_width );
+    var i, j, rows = 16,block;
 
-    var i, j, rows = 16,
-        block;
+    topHeight = block_height*(rows-1);
+
 
     for ( i = 0; i < rows; i++ ) {
         for ( j = 0; j < 3; j++ ) {
@@ -180,5 +182,5 @@ var createLeapObj =function(){
 
 var sceneSetting = function(){
     scene = new Physijs.Scene({ fixedTimeStep: 1 / 120 });
-    scene.setGravity(new THREE.Vector3( 0, -30, 0 ));
+    scene.setGravity(new THREE.Vector3( 0, -10, 0 ));
 };

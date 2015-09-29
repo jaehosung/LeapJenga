@@ -1,4 +1,4 @@
-/**
+ /**
  * Created by Jaeho on 2015-08-30.
  */
 
@@ -9,6 +9,8 @@ var _i, _v3 = new THREE.Vector3;
 var updateControl = function () {
     if (selected_block !== null) {
         _v3.copy(leapSphere.position).sub(disp).sub(selected_block.position).multiplyScalar(100);
+
+        //이부분이 턴의 난이도를 결정하는 부분이다.
         _v3.y=0;
         selected_block.setLinearVelocity(_v3);
 
