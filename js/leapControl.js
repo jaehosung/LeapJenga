@@ -1,5 +1,5 @@
 /**
- * Created by Jaeho on 2015-08-30.
+ * Created by Jaeho
  */
 //leapmotion scaling
 

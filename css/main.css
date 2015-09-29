@@ -1,0 +1,30 @@
+#banner{
+    padding-top: 10px;
+    background-color: #ff67ff;
+    /*이부분은 날릴 부분*/
+    height : 80px;
+    color: white;
+    font-size: 30px;
+    font-family: monospace;
+    font-weight: bold;
+}
+#roomStatus{
+    width: 30%;
+    /*border: dashed;*/
+}
+
+#gameStatus{
+    width: 30%;
+    /*border: dashed;*/
+    text-align: center;
+}
+#timeStatus{
+    width: 30%;
+    padding-right: 1%;
+    /*border: dashed;*/
+    text-align: right;
+}
+
+body{
+    margin : 0px;
+}

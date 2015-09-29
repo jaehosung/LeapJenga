@@ -1,13 +1,13 @@
 /**
- * Created by Jaeho on 2015-08-30.
+ * Created by Jaeho
  */
 
-var picked;
 var turn = true;
 var pre_time = new Date();
 var cur_time;
 var interval;
 var end=false;
+
 
 //setting
 var time = 10000;
@@ -78,7 +78,7 @@ var timer = function(){
 
 var turnName = function(){
     var turnName;
-    if(turn===true) turnName="1p"; else turnName="2p";
+    if(turn===true) turnName="PLAYER 1"; else turnName="PLAYER 2";
     return turnName;
 }
 

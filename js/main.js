@@ -1,5 +1,5 @@
 /**
- * Created by Jaeho on 2015-08-30.
+ * Created by Jaeho
  */
 
 'use strict';
@@ -9,6 +9,7 @@ Physijs.scripts.ammo = 'ammo.js';
 
 
 var initScene, render, renderer;
+
 
 
 function rotateCamera(angle){
@@ -46,11 +47,11 @@ initScene = function() {
 
 render = function() {
     requestAnimationFrame( render );
-
     renderer.render( scene, camera );
     render_stats.update();
     if(!end)setTurn();
-
+    updateBanner();
 };
 
 window.onload = initScene;
+
