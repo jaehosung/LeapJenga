@@ -46,6 +46,7 @@ initScene = function() {
 
 render = function() {
     requestAnimationFrame( render );
+
     renderer.render( scene, camera );
     render_stats.update();
     if(!end)setTurn();

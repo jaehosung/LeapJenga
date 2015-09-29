@@ -15,23 +15,33 @@ var time = 10000;
 
 var setTurn = function(){
     timer();
-
     pickWell();
+
 
     if(timer()>time){
 
-        if(!checkLose()&&picked) {
+        if(!checkLose()&&pickWell()) {
             turn = !turn;
             pre_time = cur_time;
             first_selected_block = null;
         }else{
             console.log(turnName()+"is lose")
+            end=true;
         }
 
     }
 
 
-            console.log("timer  "+ timer()+"  Turn : " + turnName()+"  " + picked);
+    if(!end) {
+        //console.log("timer  "+ timer()+"  Turn : " + turnName()+"  " + picked);
+        if (turn) {
+            renderer.setClearColor(0xff67ff);
+        } else {
+            renderer.setClearColor(0x44ffff);
+        }
+    }else{
+        renderer.setClearColor(0x000000);
+    }
 
     if(turn)
     {
@@ -75,8 +85,8 @@ var turnName = function(){
 var pickWell = function(){
     if(first_selected_block!=null){
         if(Math.abs(first_selected_block.position.x)+Math.abs(first_selected_block.position.z)>4) {
-            picked=true;
+            return true;
         }else
-            picked = false;
+            return false;
     }
 }
