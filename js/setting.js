@@ -141,7 +141,8 @@ var createTable = function(){
 
 var createTower = function() {
 
-    var block_length = 6, block_height = 1, block_width = 1.5, block_offset = 2,
+    var block_length = 6, block_height =1
+        , block_width = 1.5, block_offset = 2,
         block_geometry = new THREE.BoxGeometry( block_length, block_height, block_width );
     var i, j, rows = 16,block;
 

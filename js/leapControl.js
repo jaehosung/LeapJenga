@@ -54,7 +54,7 @@ Leap.loop((function(){
 
             var after_pos = rotate(frame.hands[0].palmPosition[0], frame.hands[0].palmPosition[2], cur_angle);
             leapSphere.position.x = after_pos.x/scaleLeap+diffLeap;
-            leapSphere.position.y = frame.hands[0].palmPosition[1]/22+diffLeapY;
+            leapSphere.position.y = frame.hands[0].palmPosition[1]/30+diffLeapY;
             leapSphere.position.z = after_pos.y/scaleLeap+diffLeap;
 
             var cur_grap;
