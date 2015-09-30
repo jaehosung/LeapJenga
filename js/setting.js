@@ -164,6 +164,7 @@ var createTower = function() {
             }
             jenga[j][i].receiveShadow = true;
             jenga[j][i].castShadow = true;
+
             scene.add( jenga[j][i] );
             blocks.push( jenga[j][i]);
         }

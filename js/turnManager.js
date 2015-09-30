@@ -3,7 +3,7 @@
  */
 // topy jenga 15.491868019104004
 
-var mode="hard"; //normal mode and hard mode
+var mode="normal"; //normal mode and hard mode
 
 var turn = true;
 var pre_time = new Date();

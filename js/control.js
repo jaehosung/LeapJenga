@@ -36,7 +36,9 @@ var updateControl = function () {
         }
     }
 
+
+    //jenga[1][1].position.x=10;
+
     scene.simulate(undefined, 1);
     physics_stats.update();
-
 };
