@@ -1,5 +1,5 @@
 /**
- * Created by Jaeho
+ * Created by Jay Sung
  */
 
 'use strict';
@@ -50,6 +50,7 @@ render = function() {
     renderer.render( scene, camera );
     render_stats.update();
     if(!end)setTurn();
+
     updateBanner();
 };
 

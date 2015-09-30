@@ -1,7 +1,8 @@
 /**
  * Created by Jaeho
  */
-//leapmotion scaling
+
+//Leapmotion scaling
 
 var scaleLeap = 20;
 var diffLeap = 0;

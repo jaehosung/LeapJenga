@@ -6,8 +6,9 @@ var turn = true;
 var pre_time = new Date();
 var cur_time;
 var interval;
-var end=false;
+var end=false; // 경기가 끝난 것을 의미하는 변수
 
+var loserName;
 
 //setting
 var time = 10000;
@@ -15,28 +16,89 @@ var time = 10000;
 
 var setTurn = function(){
     timer();
-    pickWell();
-
 
     if(timer()>time){
 
-        if(!checkLose()&&pickWell()) {
+        if(!normalLoseCheck()) {
             turn = !turn;
             pre_time = cur_time;
             first_selected_block = null;
         }else{
-            if(checkLose()&&first_selected_block==null){
-                turn=!turn;
-            }
-            console.log(turnName()+"is lose")
             end=true;
         }
 
     }
 
 
+   turnColorSetting();
+};
+
+// #Todo : loser를 return해주는 함수 normal mode
+var loserName;
+
+var normalLoseCheck = function(){
+    if(!checkDestroy()&&pickWell()){
+        return false;
+    }else if(checkDestroy()&&first_selected_block!=null){
+        loserName = getTurnName();
+        return true;
+    }else if(checkDestroy()&&first_selected_block==null){
+        loserName = igetTurnName();
+        return true;
+    }
+};
+
+// #Todo : loser를 return해 주는 함수 hardmode
+var hardLoserCheck = function(){
+
+};
+
+
+// Todo :  이부분에 턴이 지나가고 무너졌을때 상대방이 선택하지 않으면 그 전사람이 지게 된다.
+var checkDestroy= function(){
+
+   if(jenga[0][15].position.y<topHeight||jenga[1][15].position.y<topHeight||jenga[2][15].position.y<topHeight)
+   {
+       scene.setGravity(new THREE.Vector3( 0, -80, 0 ));
+       return true;
+   }else
+    return false;
+
+};
+
+
+
+var getTurnName = function(){
+    var turnName;
+    if(turn===true) turnName="PLAYER 1"; else turnName="PLAYER 2";
+    return turnName;
+};
+var igetTurnName = function(){
+    var turnName;
+    if(turn===true) turnName="PLAYER 2"; else turnName="PLAYER 1";
+    return turnName;
+};
+
+var pickWell = function(){
+    if(first_selected_block!=null){
+        if(Math.abs(first_selected_block.position.x)+Math.abs(first_selected_block.position.z)>4) {
+            return true;
+        }else
+            return false;
+    }
+};
+
+
+var timer = function(){
+    cur_time = new Date();
+    interval = cur_time-pre_time;
+
+    return interval;
+};
+
+//배경화면과, leap sphere의 색을 결정해 주는 함수
+var turnColorSetting = function(){
     if(!end) {
-        //console.log("timer  "+ timer()+"  Turn : " + turnName()+"  " + picked);
         if (turn) {
             renderer.setClearColor(0xff67ff);
         } else {
@@ -54,42 +116,5 @@ var setTurn = function(){
     }else{
         leap_material.color.r=0;
         leap_material.color.g=256;
-    }
-};
-
-
-// Todo :  이부분에 턴이 지나가고 무너졌을때 상대방이 선택하지 않으면 그 전사람이 지게 된다.
-var checkLose= function(){
-
-   if(jenga[0][15].position.y<topHeight||jenga[1][15].position.y<topHeight||jenga[2][15].position.y<topHeight)
-   {
-       scene.setGravity(new THREE.Vector3( 0, -80, 0 ));
-       console.log(turnName() + " is lose");
-       end=true;
-       return true;
-   }else
-    return false;
-
-};
-
-var timer = function(){
-    cur_time = new Date();
-    interval = cur_time-pre_time;
-
-    return interval;
-};
-
-var turnName = function(){
-    var turnName;
-    if(turn===true) turnName="PLAYER 1"; else turnName="PLAYER 2";
-    return turnName;
-}
-
-var pickWell = function(){
-    if(first_selected_block!=null){
-        if(Math.abs(first_selected_block.position.x)+Math.abs(first_selected_block.position.z)>4) {
-            return true;
-        }else
-            return false;
     }
 }

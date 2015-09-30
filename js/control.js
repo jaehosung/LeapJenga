@@ -1,24 +1,26 @@
  /**
- * Created by Jaeho
+ * Created by Jay Sung
  */
 
-
 var _i, _v3 = new THREE.Vector3;
-
+var mode="normal"; //normal mode and hard mode
 
 var updateControl = function () {
+
     if (selected_block !== null) {
         _v3.copy(leapSphere.position).sub(disp).sub(selected_block.position).multiplyScalar(100);
 
         //이부분이 턴의 난이도를 결정하는 부분이다.
-        _v3.y=0;
+        if(mode=="normal"){
+            _v3.y=0;
+        }
         selected_block.setLinearVelocity(_v3);
 
         // Reactivate all of the blocks
         _v3.set(0, 0, 0);
 
         for (_i = 0; _i < blocks.length; _i++) {
-            //blocks[_i].applyCentralImpulse(_v3);
+            blocks[_i].applyCentralImpulse(_v3);
         }
     } else {
         //color setting
@@ -31,12 +33,9 @@ var updateControl = function () {
             }else{
                 blocks[_i].material = block_material;
             }
-
         }
-
     }
 
-    jenga[2][10].position.x=5;
     scene.simulate(undefined, 1);
     physics_stats.update();
 

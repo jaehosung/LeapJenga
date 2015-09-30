@@ -10,7 +10,7 @@ var updateBanner = function(){
 
 function bannerColorControl() {
     if(!end){
-        if(turnName()=="PLAYER 1"){
+        if(getTurnName()=="PLAYER 1"){
             $("#banner").css("background-color","#ff67ff");
         }else{
             $("#banner").css("background-color","#44ffff");
@@ -31,9 +31,9 @@ var timeControl = function(){
 var gameControl = function(){
     var message;
     if(!end){
-        message = "TURN : " + turnName();
+        message = "TURN : " + getTurnName();
     }else{
-        message = "GAME OVER : " + "\n" + turnName() +" LOSE"
+        message = "GAME OVER : " + "\n" + getTurnName() +" LOSE"
     }
-    $("#gameStatus").text(message);
+        $("#gameStatus").text(message);
 }

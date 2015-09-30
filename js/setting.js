@@ -35,6 +35,7 @@ var renderSetting = function(){
 };
 
 var cameraSetting = function(){
+
     camera = new THREE.PerspectiveCamera(
         35,
         window.innerWidth / window.innerHeight,
@@ -51,6 +52,7 @@ var cameraSetting = function(){
 };
 
 var lightSetting = function(){
+
     // ambient light
     am_light = new THREE.AmbientLight( 0x444444 );
     scene.add( am_light );
@@ -74,6 +76,7 @@ var lightSetting = function(){
 };
 
 var materialSetting = function(){
+
     // Materials
     table_material = Physijs.createMaterial(
         new THREE.MeshLambertMaterial({ map: THREE.ImageUtils.loadTexture( 'images/wood.jpg' ), ambient: 0xFFFFFF }),
@@ -180,8 +183,7 @@ var createLeapObj =function(){
     leapSphere.grap = false;
 };
 
-
 var sceneSetting = function(){
     scene = new Physijs.Scene({ fixedTimeStep: 1 / 120 });
-    scene.setGravity(new THREE.Vector3( 0, -10, 0 ));
+    scene.setGravity(new THREE.Vector3( 0, -15, 0 ));
 };
