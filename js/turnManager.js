@@ -25,6 +25,9 @@ var setTurn = function(){
             pre_time = cur_time;
             first_selected_block = null;
         }else{
+            if(checkLose()&&first_selected_block==null){
+                turn=!turn;
+            }
             console.log(turnName()+"is lose")
             end=true;
         }

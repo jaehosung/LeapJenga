@@ -18,7 +18,7 @@ var updateControl = function () {
         _v3.set(0, 0, 0);
 
         for (_i = 0; _i < blocks.length; _i++) {
-            blocks[_i].applyCentralImpulse(_v3);
+            //blocks[_i].applyCentralImpulse(_v3);
         }
     } else {
         //color setting
@@ -36,6 +36,8 @@ var updateControl = function () {
 
     }
 
+    jenga[2][10].position.x=5;
     scene.simulate(undefined, 1);
     physics_stats.update();
+
 };
