@@ -3,7 +3,7 @@
  */
 
 var _i, _v3 = new THREE.Vector3;
-var mode="normal"; //normal mode and hard mode
+
 
 var updateControl = function () {
 

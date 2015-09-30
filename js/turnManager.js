@@ -1,12 +1,15 @@
 /**
  * Created by Jaeho
  */
+// topy jenga 15.491868019104004
+
+var mode="hard"; //normal mode and hard mode
 
 var turn = true;
 var pre_time = new Date();
 var cur_time;
 var interval;
-var end=false; // 경기가 끝난 것을 의미하는 변수
+var end = false; // 경기가 끝난 것을 의미하는 변수
 
 var loserName;
 
@@ -17,35 +20,33 @@ var time = 10000;
 var setTurn = function(){
     timer();
 
-    if(timer()>time){
-
-        if(!normalLoseCheck()) {
+    if(timer()>time) {
+        if(normalLoseCheck()){
+            end = true;
+        }else {
             turn = !turn;
             pre_time = cur_time;
             first_selected_block = null;
-        }else{
-            end=true;
         }
-
     }
-
-
    turnColorSetting();
 };
 
 // #Todo : loser를 return해주는 함수 normal mode
+
 var loserName;
 
-var normalLoseCheck = function(){
-    if(!checkDestroy()&&pickWell()){
-        return false;
-    }else if(checkDestroy()&&first_selected_block!=null){
-        loserName = getTurnName();
+var normalLoseCheck = function() {
+    if(checkDestroy()) {
+        if(first_selected_block==null) loserName = igetTurnName(); else loserName = getTurnName();
         return true;
-    }else if(checkDestroy()&&first_selected_block==null){
+    }else if(!pickWell()) {
         loserName = igetTurnName();
         return true;
+    }else{
+        return false;
     }
+
 };
 
 // #Todo : loser를 return해 주는 함수 hardmode
@@ -117,4 +118,4 @@ var turnColorSetting = function(){
         leap_material.color.r=0;
         leap_material.color.g=256;
     }
-}
+};
