@@ -17,19 +17,18 @@ var loserName;
 var time = 10000;
 
 
-var setTurn = function(){
-    timer();
 
-    if(timer()>time) {
+var setTurn = function(){
+    if(((user_id==1 && turn==true) || (user_id==2 && turn==false)) && timer()>time) {
         if(normalLoseCheck()){
             end = true;
         }else {
             turn = !turn;
             pre_time = cur_time;
             first_selected_block = null;
+            send_turn_change();
         }
     }
-   turnColorSetting();
 };
 
 // #Todo : loser를 return해주는 함수 normal mode

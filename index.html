@@ -2,6 +2,34 @@
 <html>
     <head>
         <title>LeapJenga - Jaeho</title>
+        <script type="text/javascript" src="socket.io/socket.io.js"></script>
+        <script>
+            var socket = io();
+            var send_data, user_id, send_turn_change;
+            socket.on('connected', function(uid){
+                user_id = uid;
+                console.log("You are user-"+user_id+'!!');
+                send_data = function(data) {
+                    socket.emit('to_user' + (3 - user_id), JSON.stringify(data));
+                };
+                send_turn_change = function() {
+                    console.log('turn_change_user'+(3-user_id));
+                    socket.emit('turn_change_user' + (3 - user_id));
+                };
+            });
+            socket.on('data', function(data_str){
+                var data = JSON.parse(data_str);
+                console.log(data);
+                if(window.dataDraw) dataDraw(data);
+                // setting based on given data
+            });
+            socket.on('turn_change', function(){
+                timer();
+                turn = !turn;
+                pre_time = cur_time;
+                first_selected_block = null;
+            });
+        </script>
         <script type="text/javascript" src="libs/threejs/three.js"></script>
         <script type="text/javascript" src="libs/threejs/stats.js"></script>
         <script type="text/javascript" src="libs/physijs/physi.js"></script>

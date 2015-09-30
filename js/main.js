@@ -49,7 +49,18 @@ render = function() {
     requestAnimationFrame( render );
     renderer.render( scene, camera );
     render_stats.update();
-    if(!end)setTurn();
+
+    if(!end) setTurn();
+    turnColorSetting();
+
+
+    if(user_id==1&&turn==true){
+        console.log("1p sending data");
+        send_data(statusData());
+    }
+    if(user_id==2&&turn==false){
+        send_data(statusData());
+    }
 
     updateBanner();
 };

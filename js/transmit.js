@@ -1,8 +1,9 @@
 /**
- * Created by Jay Sung on 2015-09-30.
+ * Created by Jay Sung
  */
 
 // position rotation : array
+
 var drawJenga = function(col, row, position, rotation){
     var cur_block = jenga[col][row];
     cur_block.__dirtyPosition=true;
@@ -29,7 +30,9 @@ var drawLeap = function(position){
     leapSphere.position.set.apply(leapSphere.position, position);
 }
 
-var sendData = function(){
+
+
+var statusData = function(){
     var jengaData =[];
     var leapData;
 
@@ -45,19 +48,23 @@ var sendData = function(){
 
     leapData = {position: [leapSphere.position.x,leapSphere.position.y,leapSphere.position.z]};
 
-    data = {jenga: jengaData, leap: leapData};
+    data = {jenga: jengaData, leap: leapData, time: interval, end: end};
 
-    return JSON.stringify(data);
+    return data;
 
 }
 
+
+
 var dataDraw = function(JSONdata){
-    var data = JSON.parse(JSONdata);
+    var data = JSONdata;
 
     for(var i = 0; i < 3; i++){
         for(var j = 0; j<15; j++){
             drawJenga(i,j,data.jenga[i][j].position,data.jenga[i][j].rotation);
         }
     }
+    interval=data.time;
+    end=data.end;
     drawLeap(data.leap.position);
 }

@@ -4,7 +4,6 @@
 
 var _i, _v3 = new THREE.Vector3;
 
-
 var updateControl = function () {
 
     if (selected_block !== null) {

@@ -24,6 +24,7 @@ var timeControl = function(){
     var _interval;
     _interval=10-(interval/1000);
     if(_interval<0) _interval = 0;
+
     $("#timeStatus").text("Time : " + _interval.toFixed(2) +" / 10");
 }
 

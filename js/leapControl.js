@@ -14,6 +14,8 @@ var first_selected_block=null;
 var leapSphere;
 
 
+
+
 Leap.loop((function(){
 
     var jengaSelect = function(position){
