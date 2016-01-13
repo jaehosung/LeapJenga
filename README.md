@@ -9,5 +9,5 @@ LeapJenga is game for 2 player
 
 (Three.js Physi.js Leap.js Node.js)
 
-[![](https://i.ytimg.com/vi_webp/12TSOf1BGTU/mqdefault.webp)](https://youtu.be/dhOTlfOjELw)</br>
+[![](http://img.youtube.com/vi/dhOTlfOjELw/maxresdefault.jpg)](https://youtu.be/dhOTlfOjELw)</br>
 https://youtu.be/dhOTlfOjELw
